@@ -1,7 +1,9 @@
 # Ingest Data from finnhub, publish to batch layer as parquet file
 import websocket
-import logging
 import json
+import os, sys
+sys.path.append(os.getcwd())
+from ingestion.utils import load_json
 
 class FinnhubTradeNormalizer:
     def __init__(self):
@@ -22,14 +24,6 @@ class FinnhubTradeNormalizer:
             returned_data['condition'] = data_dict.get('c')
             returned_data['message_type'] = data_type
             yield returned_data 
-
-
-def load_json(file_path):
-    data = {}
-    with open(file_path, 'r') as f:
-        data = json.load(f)
-        logging.info(f'json data from {file_path} is successfully loaded')
-    return data
 
 def on_message(ws, message):
     # print(message)
