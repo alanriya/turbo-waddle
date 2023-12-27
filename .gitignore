@@ -1,2 +1,8 @@
 */config.json
 .venv
+__pycache__
+logs/
+*.pyc
+cassandra_data/*
+finnhub-data/*
+spark-app/*
