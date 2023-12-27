@@ -30,6 +30,9 @@ x-airflow-common:
     - C:/Users/alanl/pinnacle/big_data_lambda_stream/orchestration/logs:/opt/airflow/logs
     - C:/Users/alanl/pinnacle/big_data_lambda_stream/orchestration/config:/opt/airflow/config
     - C:/Users/alanl/pinnacle/big_data_lambda_stream/orchestration/plugins:/opt/airflow/plugins
+    - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/airflow/app-result
+    - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/airflow/app-data
+    - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/airflow/spark-app
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -69,10 +72,10 @@ services:
       - "9090:8080"
       - "7077:7077"
     volumes: 
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/spark/app-result
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/spark/app-data
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/spark/spark-app
-      - spark-logs:/opt/spark/spark-events
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/airflow/app-result
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/airflow/app-data
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/airflow/spark-app
+      - spark-logs:/opt/airflow/spark-events
    
   spark-worker-1:
     image: bitnami/spark:latest
@@ -85,10 +88,10 @@ services:
       SPARK_WORKER_MEMORY: 2g
       SPARK_MASTER_URL: spark://spark-master:7077
     volumes:
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/spark/app-result
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/spark/app-data
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/spark/spark-app
-      - spark-logs:/opt/spark/spark-events
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/airflow/app-result
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/airflow/app-data
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/airflow/spark-app
+      - spark-logs:/opt/airflow/spark-events
    
   spark-worker-2:
     image: bitnami/spark:latest
@@ -101,10 +104,10 @@ services:
       SPARK_WORKER_MEMORY: 2g
       SPARK_MASTER_URL: spark://spark-master:7077
     volumes:
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/spark/app-result
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/spark/app-data
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/spark/spark-app
-      - spark-logs:/opt/spark/spark-events
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/analytics_results:/opt/airflow/app-result
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/finnhub-data:/opt/airflow/app-data
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/spark-app:/opt/airflow/spark-app
+      - spark-logs:/opt/airflow/spark-events
       
 
 # cassandra database

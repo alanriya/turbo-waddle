@@ -10,7 +10,7 @@ with DAG('spark_aggregate_px',
          catchup=False) as dag:
     submit_spark_job = SparkSubmitOperator(
         task_id = "submit_spark_job",
-        application = "/opt/airflow/dags/spark_job/pyspark_script.py",
+        application = "/opt/airflow/dags/spark_job/pyspark_aggregate_px.py",
         conn_id = "spark_local_cluster_conn",
         total_executor_cores = '2',
         executor_cores = '1',
