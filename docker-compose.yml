@@ -16,6 +16,7 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__SCHEDULER__JOB_HEARTBEAT_SEC: 300
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     # yamllint disable rule:line-length
     # Use simple http server on scheduler for health checks
@@ -111,14 +112,25 @@ services:
       
 
 # cassandra database
-  cassandra:
-    image: cassandra:4.1.3
-    ports:
-      - 9042:9042
-    volumes:
-      - C:/Users/alanl/pinnacle/big_data_lambda_stream/cassandra_data:/var/lib/cassandra
+  # cassandra:
+  #   image: cassandra:4.1.3
+  #   ports:
+  #     - 9042:9042
+  #   volumes:
+  #     - C:/Users/alanl/pinnacle/big_data_lambda_stream/cassandra_data:/var/lib/cassandra
+  #   environment:
+  #     - CASSANDRA_CLUSTER_NAME=Ellie
+  # TimeScale DB
+  timescaledb:
+    image: timescale/timescaledb-ha:pg14-latest
+    container_name: timescaledb-cont
     environment:
-      - CASSANDRA_CLUSTER_NAME=Ellie
+      - POSTGRES_PASSWORD=pwd
+      - POSTGRES_USER=alan
+      - POSTGRES_DB=stock_data
+    ports: 
+      - 5433:5432
+    
    
 # airflow
   postgres:
