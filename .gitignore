@@ -6,3 +6,5 @@ logs/
 cassandra_data/*
 finnhub-data/*
 spark-app/*
+timescaledb_data/*
+analytics_results/*

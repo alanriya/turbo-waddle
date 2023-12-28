@@ -130,6 +130,8 @@ services:
       - POSTGRES_DB=stock_data
     ports: 
       - 5433:5432
+    volumes: 
+      - C:/Users/alanl/pinnacle/big_data_lambda_stream/timescaledb_data:/home/postgres/pgdata
     
    
 # airflow
