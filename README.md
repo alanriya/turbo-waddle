@@ -60,6 +60,7 @@ As a second-stage enhancement, the application will be hosted on kubernetes. (To
 ![Alt text](resources/architecture-shot-2.png)
 
 ### project structure (to create any directories that is required but not present by default)
+```
 .
 ├── README.md
 ├── finnhub-data (for kafka to stream data as csv)
@@ -71,6 +72,7 @@ As a second-stage enhancement, the application will be hosted on kubernetes. (To
 ├── requirements.txt
 ├── resources (putting screenshots for README.md)
 └── timescaledb_data (To create for timescaleDB to land its backup data.)
+```
 
 ### Starting the application
 1) do `docker-compose.yml up -d` at the root directory
