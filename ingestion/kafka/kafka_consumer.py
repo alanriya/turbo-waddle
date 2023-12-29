@@ -7,7 +7,7 @@ import json
 
 config = load_json('ingestion/config.json')
 
-TOPIC_NAME = 'tick_trade_px'
+TOPIC_NAME = 'alternative_data_visa_application'
 KAFKA_SERVER = f"{config.get('KAFKA_HOST')}:{config.get('KAFKA_PORT')}"
 
 consumer = KafkaConsumer(TOPIC_NAME,bootstrap_servers=KAFKA_SERVER)

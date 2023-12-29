@@ -11,3 +11,10 @@ As a second-stage enhancement, the application will be hosted on kubernetes.
 
 ### Overall Architecture
 ![Alt text](resources/architecture-shot.png)
+
+### Starting the application:
+1) do `docker-compose.yml up -d` at the root directory
+2) pip install -r requirements.txt in a new environment
+3) run batch processing scripts: `python3 ingest_finnhub.py` and `python3 consume_finnhub.py`
+4) create table for speed processing data
+5) run speed processing scripts (second script to directly write to timescaleDB table): `python3 ingest_news.py` and `python3 process_flink.py`

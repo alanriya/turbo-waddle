@@ -44,7 +44,6 @@ config = load_json('ingestion/config.json')
 TOPIC_NAME = 'tick_trade_px'
 KAFKA_SERVER = f"{config.get('KAFKA_HOST')}:{config.get('KAFKA_PORT')}"
 producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER, api_version_auto_timeout_ms=20000)
-print(type(producer))
 def on_message(ws, message):
     # print(message)
     parsed_message = json.loads(message)

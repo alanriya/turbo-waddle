@@ -57,11 +57,6 @@ class FinnhubConsumer:
                 val_list.append(str(data.get(col,''))) 
             file.write(','.join(val_list))
             file.write("\n")
-                
-
-
-        
-
 
 if __name__ == "__main__":
     TOPIC_NAME = 'tick_trade_px'
